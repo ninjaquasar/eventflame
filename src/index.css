@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
+@import "tailwindcss";
+
+@theme {
+	--color-background: #171717;
+	--color-foreground: #f5f5f5;
+	--color-primary: #9966cc;
+	--font-primary: Tahoma, sans-serif;
+}
