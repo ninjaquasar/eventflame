@@ -1,7 +1,12 @@
 import React, { Fragment } from "react";
+import Navbar from "../layouts/Navbar";
 
 const Root = () => {
-	return <Fragment></Fragment>;
+	return (
+		<Fragment>
+			<Navbar />
+		</Fragment>
+	);
 };
 
 export default Root;

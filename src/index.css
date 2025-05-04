@@ -4,6 +4,10 @@
 @theme {
 	--color-background: #171717;
 	--color-foreground: #f5f5f5;
-	--color-primary: #9966cc;
-	--font-primary: Tahoma, sans-serif;
+	--color-primary: #8855bb;
+	--font-primary: "Oxanium", Tahoma, sans-serif;
+}
+
+nav .active {
+	border-bottom: 2px solid var(--color-primary);
 }
