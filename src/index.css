@@ -8,6 +8,7 @@
 	--font-primary: "Oxanium", Tahoma, sans-serif;
 }
 
-nav .active {
+nav > div > a.active {
 	border-bottom: 2px solid var(--color-primary);
+	animation: var(--animate-pulse);
 }
