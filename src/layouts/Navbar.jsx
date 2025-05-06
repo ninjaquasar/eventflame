@@ -48,7 +48,7 @@ const Navbar = () => {
 			<NavLink to="/login">
 				<button
 					type="button"
-					className="px-4 py-2 sm:px-6 lg:px-8 sm:py-3 bg-primary rounded-lg sm:rounded-xl font-semibold sm:text-xl lg:text-2xl cursor-pointer drop-shadow-[0_0_0.6rem_#552288]"
+					className="px-4 py-2 sm:px-6 lg:px-8 sm:py-3 bg-primary rounded-lg sm:rounded-xl font-semibold sm:text-xl lg:text-2xl cursor-pointer drop-shadow-[0_0_0.6rem_#552288] hover:drop-shadow-[0_0_0.8rem_#552288] active:scale-95 transition-[filter_transform]"
 				>
 					Login
 				</button>

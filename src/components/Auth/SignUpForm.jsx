@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import InputWithLabel from "./InputWithLabel";
 import { EyeClosedIcon, EyeIcon, XIcon } from "lucide-react";
 import { Bounce, Slide, toast } from "react-toastify";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import auth from "../../../config/firebase.config";
 
-const LoginForm = () => {
+const SignUpForm = () => {
 	const [passwordVisible, setPasswordVisible] = useState(false);
 	const handlePasswordLogin = (event) => {
 		event.preventDefault();
@@ -168,6 +170,20 @@ const LoginForm = () => {
 			className="flex flex-col gap-y-6"
 		>
 			<InputWithLabel
+				inputType="text"
+				backendName="userName"
+				isRequired={true}
+			>
+				Name
+			</InputWithLabel>
+			<InputWithLabel
+				inputType="url"
+				backendName="userPhoto"
+				isRequired={true}
+			>
+				Photo URL
+			</InputWithLabel>
+			<InputWithLabel
 				inputType="email"
 				backendName="userEmail"
 				isRequired={true}
@@ -204,10 +220,10 @@ const LoginForm = () => {
 				type="submit"
 				className="w-full py-2 text-2xl font-bold bg-primary rounded-full cursor-pointer"
 			>
-				Login
+				Sign Up
 			</button>
 		</form>
 	);
 };
 
-export default LoginForm;
+export default SignUpForm;

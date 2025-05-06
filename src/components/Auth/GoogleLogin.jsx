@@ -1,16 +1,53 @@
 import React from "react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import auth from "../../../config/firebase.config";
+import { Bounce, Slide, toast } from "react-toastify";
+import { XIcon } from "lucide-react";
 
 const GoogleLogin = () => {
 	const provider = new GoogleAuthProvider();
 	const handleGoogleLogin = () => {
 		signInWithPopup(auth, provider)
-			.then((info) => {
-				console.log(info.user.displayName, "-", info.user.email);
+			.then(() => {
+				toast.success("Successfully logged in! (authenticated-by-google)", {
+					theme: "dark",
+					position: "top-center",
+					autoClose: 3000,
+					closeOnClick: true,
+					closeButton: <XIcon size={24} />,
+					draggable: true,
+					pauseOnHover: false,
+					pauseOnFocusLoss: false,
+					transition: Slide,
+					style: {
+						padding: "1rem",
+						display: "flex",
+						columnGap: "1rem",
+						width: "25rem",
+					},
+				});
 			})
 			.catch((error) => {
-				console.log(error.message);
+				let cleanMessage = error.message.replace(/^Firebase:\s*/, "");
+				cleanMessage = cleanMessage.replace(/\s*\(.*?\)/g, "");
+				toast.error(cleanMessage, {
+					theme: "dark",
+					position: "top-center",
+					autoClose: 3000,
+					closeOnClick: true,
+					closeButton: <XIcon />,
+					hideProgressBar: true,
+					draggable: true,
+					pauseOnHover: false,
+					pauseOnFocusLoss: false,
+					transition: Bounce,
+					style: {
+						padding: "1rem",
+						display: "flex",
+						columnGap: "1rem",
+						width: "25rem",
+					},
+				});
 			});
 	};
 	return (
