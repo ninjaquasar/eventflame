@@ -8,6 +8,16 @@
 	--font-primary: "Oxanium", Tahoma, sans-serif;
 }
 
+::-webkit-scrollbar {
+	width: 0.75rem;
+}
+::-webkit-scrollbar-track {
+	background: #262626;
+}
+::-webkit-scrollbar-thumb {
+	background: #552288;
+}
+
 nav > div > a.active {
 	border-bottom: 2px solid var(--color-primary);
 	animation: var(--animate-pulse);

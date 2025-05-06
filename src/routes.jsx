@@ -3,6 +3,7 @@ import Root from "./pages/Root";
 import LoginPage from "./pages/LoginPage";
 import Home from "./layouts/Home";
 import SignUpPage from "./pages/SignUpPage";
+import EventDetails from "./pages/EventDetails";
 
 const router = createBrowserRouter([
 	{
@@ -21,6 +22,11 @@ const router = createBrowserRouter([
 			{
 				path: "/signup",
 				Component: SignUpPage,
+			},
+			{
+				path: "/:event_id",
+				Component: EventDetails,
+				loader: () => fetch("/eventData.json"),
 			},
 		],
 	},

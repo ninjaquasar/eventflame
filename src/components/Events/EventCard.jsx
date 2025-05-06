@@ -23,7 +23,10 @@ const EventCard = ({ data }) => {
 				<h4 className="text-2xl font-bold">{name}</h4>
 			</div>
 			<div className="overflow-hidden mt-auto rounded-b-2xl">
-				<NavLink to={`/${id}`}>
+				<NavLink
+					to={`/${id}`}
+					target="_blank"
+				>
 					<button
 						type="button"
 						className="w-full py-2 bg-primary text-xl font-medium rounded-b-2xl hover:scale-110 transition-transform active:bg-primary/80 cursor-pointer"
