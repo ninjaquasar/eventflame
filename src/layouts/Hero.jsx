@@ -5,7 +5,7 @@ import "swiper/swiper-bundle.css";
 
 const Hero = () => {
 	return (
-		<section className="mt-4">
+		<section className="my-4">
 			<Swiper
 				modules={[Navigation, Autoplay]}
 				autoplay

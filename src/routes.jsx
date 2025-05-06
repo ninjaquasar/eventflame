@@ -12,6 +12,7 @@ const router = createBrowserRouter([
 			{
 				index: true,
 				Component: Home,
+				loader: () => fetch("/eventData.json"),
 			},
 			{
 				path: "/login",

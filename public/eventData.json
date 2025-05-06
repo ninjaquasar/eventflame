@@ -2,7 +2,7 @@
 	{
 		"id": "event_01",
 		"name": "World Congress on Information Technology and Computer Science",
-		"thumbnail": "https://i.ibb.co/image_id/image-name.jpg",
+		"thumbnail": "https://i.ibb.co.com/C5KsPCLG/1.png",
 		"organizer": "World Research Society",
 		"category": "Technology",
 		"date": "2025-05-24",
@@ -14,19 +14,19 @@
 	{
 		"id": "event_02",
 		"name": "International Conference on Animal Genetics and Development",
-		"thumbnail": "https://i.ibb.co/image_id/image-name.jpg",
+		"thumbnail": "https://i.ibb.co.com/jZW7Nd1r/2.png",
 		"organizer": "Aserd",
 		"category": "Animal Research",
 		"date": "2025-06-01",
 		"registration_deadline": "2025-05-10",
-		"location": "Ishwarganj, Bangladesh",
+		"location": "Chittagong, Bangladesh",
 		"entry_fee": 1850,
 		"description": "International Conference on Animal Genetics and Development (ICAGD), on 1st Jun 2025 at Ishwarganj, Bangladesh. The key intention of ICAGD is to provide opportunity for the global participants to share their ideas and experience in person with their peers expected to join from different parts on the world. In addition this gathering will help the delegates to establish research or business relations as well as to find international linkage for future collaborations in their career path. We hope that ICAGD outcome will lead to significant contributions to the knowledge base in these up-to-date scientific fields in scope."
 	},
 	{
 		"id": "event_03",
 		"name": "International Conference on Nanoscience, Nanotechnology and Advanced Materials",
-		"thumbnail": "https://i.ibb.co/image_id/image-name.jpg",
+		"thumbnail": "https://i.ibb.co.com/CKSpCTYj/3.png",
 		"organizer": "Academicsworld",
 		"category": "Technology",
 		"date": "2025-06-01",
@@ -38,7 +38,7 @@
 	{
 		"id": "event_04",
 		"name": "International Conference on Education and New Learning Technologies",
-		"thumbnail": "https://i.ibb.co/image_id/image-name.jpg",
+		"thumbnail": "https://i.ibb.co.com/LD21WkJ8/4.png",
 		"organizer": "World Research Society",
 		"category": "Education",
 		"date": "2025-06-01",
@@ -50,19 +50,19 @@
 	{
 		"id": "event_05",
 		"name": "Dhaka Fertility Expo 2025",
-		"thumbnail": "https://i.ibb.co/image_id/image-name.jpg",
+		"thumbnail": "https://i.ibb.co.com/Yx0rH0b/5.png",
 		"organizer": "Eco Expo",
 		"category": "Fertility",
 		"date": "2025-06-26",
 		"registration_deadline": "2025-06-07",
-		"location": "BCFCC, Agargaon, Bangladesh",
+		"location": "BCFCC, Dhaka, Bangladesh",
 		"entry_fee": 2500,
 		"description": "Say \"No More Inferlity\". Eco Expo welcomes you in your parenthood journey at Dhaka Fertility Expo - 2025. At the Dhaka Fertility Expo-2025, you can have the opportunity to interact under the same roof with renowned local and international experts, doctors, and fertility centers. The expo aims to provide a platform for individuals to interact with local and international experts, doctors, and fertility centers to discuss their fertility concerns and potential treatment options. The expo has partnerships with organizations like the Bangladesh Private Hospital Clinic Diagnostic Owners Association (BPHCDOA) and the Bangladesh Medical Equipment Importers & Suppliers Association (BMEISA)."
 	},
 	{
 		"id": "event_06",
 		"name": "International Conference on Next-Generation Computing, IoT and Machine",
-		"thumbnail": "https://i.ibb.co/image_id/image-name.jpg",
+		"thumbnail": "https://i.ibb.co.com/RGPn04r3/6.png",
 		"organizer": "Dhaka University of Engineering & Technology (DUET)",
 		"category": "Technology",
 		"date": "2025-06-27",
