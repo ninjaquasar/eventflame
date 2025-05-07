@@ -3,7 +3,7 @@ import EventCard from "../components/Events/EventCard";
 
 const UpcomingEvents = ({ eventsData }) => {
 	return (
-		<section className="my-24 space-y-12 px-6 sm:px-16 lg:px-24 2xl:px-28">
+		<section className="my-28 space-y-12 px-6 sm:px-16 lg:px-24 2xl:px-28">
 			<h2 className="bg-gradient-to-r bg-clip-text text-transparent from-purple-100 to-primary text-4xl font-bold text-center">
 				Upcoming Events
 			</h2>
