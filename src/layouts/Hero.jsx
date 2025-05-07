@@ -17,6 +17,17 @@ const Hero = () => {
 				}}
 			>
 				<SwiperSlide>
+					<div className="bg-[url(https://i.ibb.co.com/1fGY05Cy/eventflame.jpg)] h-[80vh] bg-cover bg-center flex flex-col justify-center px-20">
+						<h3 className="text-5xl font-bold">
+							Light up your moments.
+							<br />
+							Discover events that
+							<br />
+							ignite your interest.
+						</h3>
+					</div>
+				</SwiperSlide>
+				<SwiperSlide>
 					<div className="bg-[url(https://i.ibb.co.com/Vp2BcnjJ/conference.jpg)] h-[80vh] bg-cover bg-center flex flex-col justify-center px-20">
 						<h1 className="text-5xl font-bold">Conferences</h1>
 					</div>
