@@ -2,21 +2,75 @@ import React, { useState } from "react";
 import InputWithLabel from "./InputWithLabel";
 import { EyeClosedIcon, EyeIcon, XIcon } from "lucide-react";
 import { Bounce, Slide, toast } from "react-toastify";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from "../../../config/firebase.config";
+import {
+	createUserWithEmailAndPassword,
+	sendEmailVerification,
+	updateProfile,
+} from "firebase/auth";
+
+// spidey@avengers.team
+// WebClimb#3
 
 const SignUpForm = () => {
 	const [passwordVisible, setPasswordVisible] = useState(false);
 	const handlePasswordLogin = (event) => {
 		event.preventDefault();
+		const name = event.target.userName.value;
+		const photoURL = event.target.userPhoto.value;
 		const email = event.target.userEmail.value;
 		const password = event.target.userPassword.value;
-		if (handleValidatePassword(password)) {
+		if (handleValidateFields(password, photoURL)) {
+			event.target.userName.value = "";
+			event.target.userPhoto.value = "";
 			event.target.userEmail.value = "";
 			event.target.userPassword.value = "";
+			createUserWithEmailAndPassword(auth, email, password)
+				.then((signupInfo) => {
+					const userInfo = signupInfo.user;
+					console.log(userInfo);
+					const profile = {
+						displayName: name,
+						photoURL: photoURL,
+					};
+					updateProfile(auth.currentUser, profile)
+						.then(() => {
+							console.log("User Profile updated when Signing Up");
+						})
+						.catch((error) => console.log(error.message));
+					sendEmailVerification(auth.currentUser)
+						.then(() => {
+							toast.info(
+								"We've sent you a verification mail. Please verify your email.",
+								{
+									theme: "dark",
+									position: "top-center",
+									autoClose: 4000,
+									closeOnClick: true,
+									closeButton: <XIcon size={32} />,
+									draggable: true,
+									pauseOnHover: false,
+									pauseOnFocusLoss: false,
+									transition: Slide,
+									style: {
+										padding: "1rem",
+										display: "flex",
+										columnGap: "0.5rem",
+										width: "25rem",
+									},
+								},
+							);
+						})
+						.catch((error) => {
+							console.log(error.message);
+						});
+				})
+				.catch((error) => {
+					console.log(error.message);
+				});
 		}
 	};
-	const handleValidatePassword = (password) => {
+	const handleValidateFields = (password = "", photoURL = "") => {
 		if (!password) {
 			toast.error("Password cannot be empty. (no-password)", {
 				theme: "dark",
@@ -38,12 +92,33 @@ const SignUpForm = () => {
 			});
 			return false;
 		}
+		const checkScheme = /^https:\/\/[^\s]+$/;
 		const checkLength = /^.{6,}$/;
 		const checkLowercase = /(?=.*[a-z])/;
 		const checkUppercase = /(?=.*[A-Z])/;
 		const checkDigit = /(?=.*[0-9])/;
 		const checkSymbol = /(?=.*[^a-zA-Z0-9])/;
-		if (!checkLength.test(password)) {
+		if (!checkScheme.test(photoURL)) {
+			toast.error("Invalid Photo URL. (invalid-photourl)", {
+				theme: "dark",
+				position: "top-center",
+				autoClose: 3500,
+				closeOnClick: true,
+				closeButton: <XIcon size={32} />,
+				hideProgressBar: true,
+				draggable: true,
+				pauseOnHover: false,
+				pauseOnFocusLoss: false,
+				transition: Bounce,
+				style: {
+					padding: "1rem",
+					display: "flex",
+					columnGap: "0.5rem",
+					width: "25rem",
+				},
+			});
+			return false;
+		} else if (!checkLength.test(password)) {
 			toast.error("Password must contain at least 6 characters. (weak-password)", {
 				theme: "dark",
 				position: "top-center",
@@ -144,10 +219,10 @@ const SignUpForm = () => {
 			});
 			return false;
 		} else {
-			toast.success("Successfully logged in! (strong-password, authenticated)", {
+			toast.success("Successfully created the account! (strong-password, authorized)", {
 				theme: "dark",
 				position: "top-center",
-				autoClose: 3000,
+				autoClose: 3500,
 				closeOnClick: true,
 				closeButton: <XIcon size={24} />,
 				draggable: true,
@@ -179,7 +254,8 @@ const SignUpForm = () => {
 			<InputWithLabel
 				inputType="url"
 				backendName="userPhoto"
-				isRequired={true}
+				isRequired={false}
+				noValidate={true}
 			>
 				Photo URL
 			</InputWithLabel>

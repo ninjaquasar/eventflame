@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import InputWithLabel from "./InputWithLabel";
 import { EyeClosedIcon, EyeIcon, XIcon } from "lucide-react";
 import { Bounce, Slide, toast } from "react-toastify";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import auth from "../../../config/firebase.config";
 
 const LoginForm = () => {
 	const [passwordVisible, setPasswordVisible] = useState(false);
@@ -9,158 +11,76 @@ const LoginForm = () => {
 		event.preventDefault();
 		const email = event.target.userEmail.value;
 		const password = event.target.userPassword.value;
-		if (handleValidatePassword(password)) {
-			event.target.userEmail.value = "";
-			event.target.userPassword.value = "";
-		}
-	};
-	const handleValidatePassword = (password) => {
-		if (!password) {
-			toast.error("Password cannot be empty. (no-password)", {
-				theme: "dark",
-				position: "top-center",
-				autoClose: 3000,
-				closeOnClick: true,
-				closeButton: <XIcon size={24} />,
-				hideProgressBar: true,
-				draggable: true,
-				pauseOnHover: false,
-				pauseOnFocusLoss: false,
-				transition: Bounce,
-				style: {
-					padding: "1rem",
-					display: "flex",
-					columnGap: "1rem",
-					width: "25rem",
-				},
+		signInWithEmailAndPassword(auth, email, password)
+			.then((loginInfo) => {
+				const userInfo = loginInfo.user;
+				console.log(userInfo);
+				if (!userInfo.emailVerified)
+					toast.warning("Email is not verified. (unverified-email)", {
+						theme: "dark",
+						position: "top-center",
+						autoClose: 3500,
+						closeOnClick: true,
+						closeButton: <XIcon size={32} />,
+						hideProgressBar: true,
+						draggable: true,
+						pauseOnHover: false,
+						pauseOnFocusLoss: false,
+						transition: Bounce,
+						style: {
+							padding: "1rem",
+							display: "flex",
+							columnGap: "0.5rem",
+							width: "25rem",
+						},
+					});
+				else {
+					toast.success("Successfully logged in! (strong-password, authenticated)", {
+						theme: "dark",
+						position: "top-center",
+						autoClose: 3000,
+						closeOnClick: true,
+						closeButton: <XIcon size={24} />,
+						draggable: true,
+						pauseOnHover: false,
+						pauseOnFocusLoss: false,
+						transition: Slide,
+						style: {
+							padding: "1rem",
+							display: "flex",
+							columnGap: "1rem",
+							width: "25rem",
+						},
+					});
+					event.target.userEmail.value = "";
+					event.target.userPassword.value = "";
+				}
+			})
+			.catch((error) => {
+				if (error.code === "auth/invalid-credential")
+					toast.error(
+						"No user found with the given credential. (invalid-credential)",
+						{
+							theme: "dark",
+							position: "top-center",
+							autoClose: 3500,
+							closeOnClick: true,
+							closeButton: <XIcon size={32} />,
+							hideProgressBar: true,
+							draggable: true,
+							pauseOnHover: false,
+							pauseOnFocusLoss: false,
+							transition: Bounce,
+							style: {
+								padding: "1rem",
+								display: "flex",
+								columnGap: "0.5rem",
+								width: "25rem",
+							},
+						},
+					);
+				else console.log(error.message);
 			});
-			return false;
-		}
-		const checkLength = /^.{6,}$/;
-		const checkLowercase = /(?=.*[a-z])/;
-		const checkUppercase = /(?=.*[A-Z])/;
-		const checkDigit = /(?=.*[0-9])/;
-		const checkSymbol = /(?=.*[^a-zA-Z0-9])/;
-		if (!checkLength.test(password)) {
-			toast.error("Password must contain at least 6 characters. (weak-password)", {
-				theme: "dark",
-				position: "top-center",
-				autoClose: 3500,
-				closeOnClick: true,
-				closeButton: <XIcon size={32} />,
-				hideProgressBar: true,
-				draggable: true,
-				pauseOnHover: false,
-				pauseOnFocusLoss: false,
-				transition: Bounce,
-				style: {
-					padding: "1rem",
-					display: "flex",
-					columnGap: "0.5rem",
-					width: "25rem",
-				},
-			});
-			return false;
-		} else if (!checkLowercase.test(password)) {
-			toast.error("Password must include at least 1 lowercase letter. (weak-password)", {
-				theme: "dark",
-				position: "top-center",
-				autoClose: 3000,
-				closeOnClick: true,
-				closeButton: <XIcon size={24} />,
-				hideProgressBar: true,
-				draggable: true,
-				pauseOnHover: false,
-				pauseOnFocusLoss: false,
-				transition: Bounce,
-				style: {
-					padding: "1rem",
-					display: "flex",
-					columnGap: "1rem",
-					width: "25rem",
-				},
-			});
-			return false;
-		} else if (!checkUppercase.test(password)) {
-			toast.error("Password must include at least 1 uppercase letter. (weak-password)", {
-				theme: "dark",
-				position: "top-center",
-				autoClose: 3000,
-				closeOnClick: true,
-				closeButton: <XIcon size={24} />,
-				hideProgressBar: true,
-				draggable: true,
-				pauseOnHover: false,
-				pauseOnFocusLoss: false,
-				transition: Bounce,
-				style: {
-					padding: "1rem",
-					display: "flex",
-					columnGap: "1rem",
-					width: "25rem",
-				},
-			});
-			return false;
-		} else if (!checkDigit.test(password)) {
-			toast.error("Password must include at least 1 digit. (weak-password)", {
-				theme: "dark",
-				position: "top-center",
-				autoClose: 3000,
-				closeOnClick: true,
-				closeButton: <XIcon size={24} />,
-				hideProgressBar: true,
-				draggable: true,
-				pauseOnHover: false,
-				pauseOnFocusLoss: false,
-				transition: Bounce,
-				style: {
-					padding: "1rem",
-					display: "flex",
-					columnGap: "1rem",
-					width: "25rem",
-				},
-			});
-			return false;
-		} else if (!checkSymbol.test(password)) {
-			toast.error("Password must include at least 1 symbol. (medium-password)", {
-				theme: "dark",
-				position: "top-center",
-				autoClose: 3000,
-				closeOnClick: true,
-				closeButton: <XIcon size={24} />,
-				hideProgressBar: true,
-				draggable: true,
-				pauseOnHover: false,
-				pauseOnFocusLoss: false,
-				transition: Bounce,
-				style: {
-					padding: "1rem",
-					display: "flex",
-					columnGap: "1rem",
-					width: "25rem",
-				},
-			});
-			return false;
-		} else {
-			toast.success("Successfully logged in! (strong-password, authenticated)", {
-				theme: "dark",
-				position: "top-center",
-				autoClose: 3000,
-				closeOnClick: true,
-				closeButton: <XIcon size={24} />,
-				draggable: true,
-				pauseOnHover: false,
-				pauseOnFocusLoss: false,
-				transition: Slide,
-				style: {
-					padding: "1rem",
-					display: "flex",
-					columnGap: "1rem",
-					width: "25rem",
-				},
-			});
-			return true;
-		}
 	};
 	return (
 		<form

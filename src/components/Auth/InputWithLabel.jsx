@@ -5,6 +5,7 @@ const InputWithLabel = ({
 	inputType = "text",
 	backendName = "",
 	isRequired = true,
+	noValidate = false,
 }) => {
 	return (
 		<label className="text-xl md:text-2xl font-medium">
@@ -14,6 +15,7 @@ const InputWithLabel = ({
 				name={backendName}
 				placeholder={`Type the ${children} here...`}
 				required={isRequired}
+				formNoValidate={noValidate}
 				className="mt-1 w-full p-3 text-xl font-normal rounded-lg border border-neutral-800 caret-primary focus:outline-none focus:bg-[#121212] focus:border-primary"
 			/>
 		</label>
