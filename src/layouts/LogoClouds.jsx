@@ -4,7 +4,10 @@ const LogoClouds = () => {
 	return (
 		<div className="mt-28 space-y-12 px-6 sm:px-16 lg:px-24 2xl:px-28">
 			<h3 className="text-center text-3xl font-semibold">
-				Trusted by the World's Large Communities
+				<span className="bg-gradient-to-r bg-clip-text from-purple-500 to-purple-300 text-transparent">
+					Trusted by
+				</span>{" "}
+				the World's Large Communities
 			</h3>
 			<div className="mx-auto flex justify-center gap-x-20">
 				<a

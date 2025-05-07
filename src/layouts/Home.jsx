@@ -4,6 +4,7 @@ import Hero from "./Hero";
 import UpcomingEvents from "./UpcomingEvents";
 import { useLoaderData } from "react-router";
 import LogoClouds from "./LogoClouds";
+import TipsLayout from "./TipsLayout";
 
 const Home = () => {
 	const eventsData = useLoaderData();
@@ -15,6 +16,7 @@ const Home = () => {
 			<Hero />
 			<LogoClouds />
 			<UpcomingEvents eventsData={eventsData} />
+			<TipsLayout />
 		</main>
 	);
 };
