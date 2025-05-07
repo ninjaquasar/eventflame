@@ -5,9 +5,13 @@ import {
 	MapPinnedIcon,
 	TicketXIcon,
 	UserRoundCogIcon,
+	XIcon,
 } from "lucide-react";
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
+import InputWithLabel from "../components/Auth/InputWithLabel";
+import { Slide, toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const EventDetails = () => {
 	const allEvents = useLoaderData();
@@ -25,9 +29,34 @@ const EventDetails = () => {
 		entry_fee,
 		description,
 	} = data;
-	console.log(data);
+	const handleReserveSeat = (event) => {
+		event.preventDefault();
+		event.target.visitorName.value = "";
+		event.target.visitorEmail.value = "";
+		const seatId = Math.floor(Math.random() * 1000);
+		toast.success(`Reserved Seat-${seatId} for you!`, {
+			theme: "dark",
+			position: "top-center",
+			autoClose: 3500,
+			closeOnClick: true,
+			closeButton: <XIcon size={24} />,
+			draggable: true,
+			pauseOnHover: false,
+			pauseOnFocusLoss: false,
+			transition: Slide,
+			style: {
+				padding: "1rem",
+				display: "flex",
+				columnGap: "1rem",
+				width: "25rem",
+			},
+		});
+	};
 	return (
-		<section className="my-4 space-y-12 px-6 sm:px-16 lg:px-24 2xl:px-28">
+		<section className="my-4 space-y-8 px-6 sm:px-16 lg:px-24 2xl:px-28">
+			<Helmet>
+				<title>{name} - EventFlame</title>
+			</Helmet>
 			<div>
 				<img
 					src={thumbnail}
@@ -103,6 +132,34 @@ const EventDetails = () => {
 						&#2547;{entry_fee}
 					</h5>
 				</div>
+			</div>
+			<div>
+				<h2 className="text-4xl font-bold text-center">Reserve a Seat</h2>
+				<form
+					onSubmit={handleReserveSeat}
+					className="w-2/5 mt-4 mx-auto p-8 rounded-2xl bg-gradient-to-br from-[#111111] to-[#121212] flex flex-col gap-y-6"
+				>
+					<InputWithLabel
+						inputType="text"
+						backendName="visitorName"
+						isRequired={true}
+					>
+						Name
+					</InputWithLabel>
+					<InputWithLabel
+						inputType="email"
+						backendName="visitorEmail"
+						isRequired={true}
+					>
+						Email
+					</InputWithLabel>
+					<button
+						type="submit"
+						className="w-full py-2 text-2xl font-medium bg-primary rounded-xl cursor-pointer"
+					>
+						Reserve Seat
+					</button>
+				</form>
 			</div>
 		</section>
 	);

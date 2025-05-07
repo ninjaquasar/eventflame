@@ -4,9 +4,13 @@ import { EyeClosedIcon, EyeIcon, XIcon } from "lucide-react";
 import { Bounce, Slide, toast } from "react-toastify";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from "../../../config/firebase.config";
+import { Link, useNavigate } from "react-router";
+import { useForm } from "react-hook-form";
 
 const LoginForm = () => {
 	const [passwordVisible, setPasswordVisible] = useState(false);
+	const { register, getValues } = useForm();
+	const navigate = useNavigate();
 	const handlePasswordLogin = (event) => {
 		event.preventDefault();
 		const email = event.target.userEmail.value;
@@ -87,13 +91,17 @@ const LoginForm = () => {
 			onSubmit={handlePasswordLogin}
 			className="flex flex-col gap-y-6"
 		>
-			<InputWithLabel
-				inputType="email"
-				backendName="userEmail"
-				isRequired={true}
-			>
+			<label className="text-xl md:text-2xl font-medium">
 				Email
-			</InputWithLabel>
+				<input
+					type="email"
+					name="userEmail"
+					required
+					className="mt-1 w-full p-3 text-xl font-normal rounded-lg border border-neutral-800 caret-primary focus:outline-none focus:bg-[#121212] focus:border-primary"
+					placeholder="Type the Email here..."
+					{...register("email")}
+				/>
+			</label>
 			<div className="relative">
 				<InputWithLabel
 					inputType={passwordVisible ? "text" : "password"}
@@ -102,6 +110,18 @@ const LoginForm = () => {
 				>
 					Password
 				</InputWithLabel>
+				<p className="absolute top-1 right-0 font-medium text-primary">
+					<button
+						type="button"
+						className="cursor-pointer"
+						onClick={() => {
+							const email = getValues("email");
+							navigate("/reset-password", { state: { email } });
+						}}
+					>
+						Forgot Password?
+					</button>
+				</p>
 				<button
 					type="button"
 					className="absolute rounded-lg p-2 top-10 right-1 cursor-pointer hover:bg-[#101010]"

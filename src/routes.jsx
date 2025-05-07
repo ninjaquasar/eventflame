@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import Home from "./layouts/Home";
 import SignUpPage from "./pages/SignUpPage";
 import EventDetails from "./pages/EventDetails";
+import ResetPassword from "./pages/ResetPassword";
 
 const router = createBrowserRouter([
 	{
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
 				path: "/:event_id",
 				Component: EventDetails,
 				loader: () => fetch("/eventData.json"),
+			},
+			{
+				path: "/reset-password",
+				Component: ResetPassword,
 			},
 		],
 	},
