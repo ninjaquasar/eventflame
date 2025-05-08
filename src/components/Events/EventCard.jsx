@@ -13,14 +13,14 @@ const EventCard = ({ data }) => {
 					onClick={() => window.open(thumbnail, "_blank")}
 				/>
 			</div>
-			<div className="m-6 space-y-5">
+			<div className="mx-3 my-4 md:m-6 space-y-5">
 				<div className="flex justify-between">
-					<span className="bg-primary px-3 py-1 rounded-full font-medium">
+					<span className="bg-primary px-3 py-1 rounded-full font-medium max-md:text-sm">
 						{category}
 					</span>
-					<span className="font-medium">{location}</span>
+					<span className="font-medium max-md:text-sm">{location}</span>
 				</div>
-				<h4 className="text-2xl font-bold">{name}</h4>
+				<h4 className="text-xl md:text-2xl font-bold">{name}</h4>
 			</div>
 			<div className="overflow-hidden mt-auto rounded-b-2xl">
 				<NavLink

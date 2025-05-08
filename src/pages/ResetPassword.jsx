@@ -34,7 +34,7 @@ const ResetPassword = () => {
 		});
 	};
 	return (
-		<section className="mt-12 px-6 sm:px-16 lg:px-24 2xl:px-28">
+		<section className="mt-12 my-24 px-6 sm:px-16 lg:px-24 2xl:px-28">
 			<Helmet>
 				<title>Reset Password - EventFlame</title>
 			</Helmet>

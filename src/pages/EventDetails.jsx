@@ -53,7 +53,7 @@ const EventDetails = () => {
 		});
 	};
 	return (
-		<section className="my-4 space-y-8 px-6 sm:px-16 lg:px-24 2xl:px-28">
+		<section className="mt-4 mb-16 space-y-6 lg:space-y-8 px-6 sm:px-16 lg:px-24 2xl:px-28">
 			<Helmet>
 				<title>{name} - EventFlame</title>
 			</Helmet>
@@ -65,14 +65,16 @@ const EventDetails = () => {
 				/>
 			</div>
 			<div>
-				<h1 className="text-5xl font-bold text-center">{name}</h1>
+				<h1 className="sm:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-center">
+					{name}
+				</h1>
 			</div>
-			<div className="flex justify-between">
-				<div className="max-w-3/5">
-					<p className="text-lg text-justify">{description}</p>
+			<div className="flex max-xl:flex-col justify-between gap-x-16 gap-y-8">
+				<div className="xl:max-w-1/2 2xl:max-w-3/5">
+					<p className="lg:text-lg text-justify">{description}</p>
 				</div>
 				<div className="space-y-4">
-					<h5 className="text-xl flex items-center gap-x-3">
+					<h5 className="text-lg lg:text-xl flex items-center gap-x-3">
 						<ChartBarStackedIcon
 							size={28}
 							color="#bb88ee"
@@ -80,7 +82,7 @@ const EventDetails = () => {
 						<span className="font-semibold">Category:</span>
 						{category}
 					</h5>
-					<h5 className="text-xl flex items-center gap-x-3">
+					<h5 className="text-lg lg:text-xl flex items-center gap-x-3">
 						<UserRoundCogIcon
 							size={28}
 							color="#bb88ee"
@@ -88,7 +90,7 @@ const EventDetails = () => {
 						<span className="font-semibold">Organizer:</span>
 						{organizer}
 					</h5>
-					<h5 className="text-xl flex items-center gap-x-3">
+					<h5 className="text-lg lg:text-xl flex items-center gap-x-3">
 						<MapPinnedIcon
 							size={28}
 							color="#bb88ee"
@@ -96,7 +98,7 @@ const EventDetails = () => {
 						<span className="font-semibold">Due Location:</span>
 						{location}
 					</h5>
-					<h5 className="text-xl flex items-center gap-x-3">
+					<h5 className="text-lg lg:text-xl flex items-center gap-x-3">
 						<CalendarCheckIcon
 							size={28}
 							color="#bb88ee"
@@ -115,7 +117,7 @@ const EventDetails = () => {
 							)
 						</span>
 					</h5>
-					<h5 className="text-xl flex items-center gap-x-3">
+					<h5 className="text-lg lg:text-xl flex items-center gap-x-3">
 						<TicketXIcon
 							size={28}
 							color="#bb88ee"
@@ -123,7 +125,7 @@ const EventDetails = () => {
 						<span className="font-semibold">Registration Deadline:</span>
 						{registration_deadline}
 					</h5>
-					<h5 className="text-xl flex items-center gap-x-3">
+					<h5 className="text-lg lg:text-xl flex items-center gap-x-3">
 						<BanknoteArrowDownIcon
 							size={28}
 							color="#bb88ee"
@@ -133,11 +135,11 @@ const EventDetails = () => {
 					</h5>
 				</div>
 			</div>
-			<div>
-				<h2 className="text-4xl font-bold text-center">Reserve a Seat</h2>
+			<div className="max-md:mt-16">
+				<h2 className="text-3xl md:text-4xl font-bold text-center">Reserve a Seat</h2>
 				<form
 					onSubmit={handleReserveSeat}
-					className="w-2/5 mt-4 mx-auto p-8 rounded-2xl bg-gradient-to-br from-[#111111] to-[#121212] flex flex-col gap-y-6"
+					className="w-full sm:w-4/5 lg:w-3/4 xl:w-1/2 2xl:w-2/5 mt-4 mx-auto p-8 rounded-2xl bg-gradient-to-br from-[#111111] to-[#121212] flex flex-col gap-y-6"
 				>
 					<InputWithLabel
 						inputType="text"

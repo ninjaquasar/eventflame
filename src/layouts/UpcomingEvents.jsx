@@ -7,7 +7,7 @@ const UpcomingEvents = ({ eventsData }) => {
 			<h2 className="bg-gradient-to-r bg-clip-text text-transparent from-purple-100 to-primary text-4xl font-bold text-center">
 				Upcoming Events
 			</h2>
-			<div className="grid grid-cols-3 gap-6">
+			<div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-6">
 				{eventsData.map((eventData) => (
 					<EventCard
 						key={eventData.id}

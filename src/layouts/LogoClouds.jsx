@@ -9,7 +9,7 @@ const LogoClouds = () => {
 				</span>{" "}
 				the World's Large Communities
 			</h3>
-			<div className="mx-auto flex justify-center gap-x-20">
+			<div className="mx-auto grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6  lg:grid-cols-9 gap-x-8 sm:gap-x-12 lg:gap-x-16 xl:gap-x-20 gap-y-12 place-items-center">
 				<a
 					href="https://vite.dev"
 					target="_blank"

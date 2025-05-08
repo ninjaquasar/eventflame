@@ -6,7 +6,7 @@ const InputWithLabel = ({
 	backendName = "",
 	isRequired = true,
 	noValidate = false,
-	defaultValue = null,
+	defaultValue = "",
 }) => {
 	return (
 		<label className="text-xl md:text-2xl font-medium">

@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 const Footer = () => {
 	return (
-		<footer className="bg-foreground text-background p-28 flex justify-between">
+		<footer className="bg-foreground text-background p-8 md:p-16 xl:p-28 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-20 gap-y-12">
 			<div className="space-y-4 self-center">
 				<div className="flex items-center gap-x-3">
 					<img
@@ -14,7 +14,7 @@ const Footer = () => {
 					/>
 					<h3 className="text-3xl font-bold">EventFlame</h3>
 				</div>
-				<p className="text-lg font-medium w-2/3">
+				<p className="text-lg font-medium">
 					Light up your moments. Discover events that ignite your interest.
 				</p>
 			</div>

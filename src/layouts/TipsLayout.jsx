@@ -25,7 +25,7 @@ const TipsLayout = () => {
 			<p className="text-lg text-center mt-2">
 				Simple habits to keep your event experience secure. Your safety is our priority.
 			</p>
-			<div className="grid grid-cols-4 mt-10 gap-8">
+			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 mt-10 gap-8">
 				<div className="bg-[#202020] rounded-2xl px-5 py-7 space-y-4 relative hover:bg-[#232323] transition-colors">
 					<RadarIcon
 						size={56}

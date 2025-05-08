@@ -4,21 +4,20 @@ import { EyeClosedIcon, EyeIcon, XIcon } from "lucide-react";
 import { Bounce, Slide, toast } from "react-toastify";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from "../../../config/firebase.config";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 
 const LoginForm = () => {
 	const [passwordVisible, setPasswordVisible] = useState(false);
-	const { register, getValues } = useForm();
+	const { register, getValues, reset } = useForm();
 	const navigate = useNavigate();
 	const handlePasswordLogin = (event) => {
 		event.preventDefault();
-		const email = event.target.userEmail.value;
-		const password = event.target.userPassword.value;
+		const email = getValues("email");
+		const password = event.target.password.value;
 		signInWithEmailAndPassword(auth, email, password)
 			.then((loginInfo) => {
 				const userInfo = loginInfo.user;
-				console.log(userInfo);
 				if (!userInfo.emailVerified)
 					toast.warning("Email is not verified. (unverified-email)", {
 						theme: "dark",
@@ -39,7 +38,7 @@ const LoginForm = () => {
 						},
 					});
 				else {
-					toast.success("Successfully logged in! (strong-password, authenticated)", {
+					toast.success("Successfully logged in! (user-authenticated)", {
 						theme: "dark",
 						position: "top-center",
 						autoClose: 3000,
@@ -56,8 +55,7 @@ const LoginForm = () => {
 							width: "25rem",
 						},
 					});
-					event.target.userEmail.value = "";
-					event.target.userPassword.value = "";
+					reset();
 				}
 			})
 			.catch((error) => {
@@ -83,6 +81,25 @@ const LoginForm = () => {
 							},
 						},
 					);
+				else if (error.code === "auth/missing-password")
+					toast.error("Password is missing. (missing-password)", {
+						theme: "dark",
+						position: "top-center",
+						autoClose: 3500,
+						closeOnClick: true,
+						closeButton: <XIcon size={32} />,
+						hideProgressBar: true,
+						draggable: true,
+						pauseOnHover: false,
+						pauseOnFocusLoss: false,
+						transition: Bounce,
+						style: {
+							padding: "1rem",
+							display: "flex",
+							columnGap: "0.5rem",
+							width: "25rem",
+						},
+					});
 				else console.log(error.message);
 			});
 	};
@@ -95,7 +112,7 @@ const LoginForm = () => {
 				Email
 				<input
 					type="email"
-					name="userEmail"
+					name="email"
 					required
 					className="mt-1 w-full p-3 text-xl font-normal rounded-lg border border-neutral-800 caret-primary focus:outline-none focus:bg-[#121212] focus:border-primary"
 					placeholder="Type the Email here..."
@@ -105,7 +122,7 @@ const LoginForm = () => {
 			<div className="relative">
 				<InputWithLabel
 					inputType={passwordVisible ? "text" : "password"}
-					backendName="userPassword"
+					backendName="password"
 					isRequired={false}
 				>
 					Password
