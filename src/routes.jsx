@@ -6,6 +6,7 @@ import SignUpPage from "./pages/SignUpPage";
 import EventDetails from "./pages/EventDetails";
 import ResetPassword from "./pages/ResetPassword";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
 
 const router = createBrowserRouter([
 	{
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
 			{
 				path: "/privacy-policy",
 				Component: PrivacyPolicy,
+			},
+			{
+				path: "/terms-conditions",
+				Component: TermsAndConditions,
 			},
 		],
 	},

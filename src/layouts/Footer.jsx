@@ -58,7 +58,7 @@ const Footer = () => {
 				<ul className="flex flex-col gap-y-2 font-medium">
 					<li className="hover:text-purple-800">
 						<Link
-							to="/terms-and-conditions"
+							to="/terms-conditions"
 							target="_blank"
 						>
 							Terms and Conditions

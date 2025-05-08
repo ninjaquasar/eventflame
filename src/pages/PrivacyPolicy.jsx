@@ -493,8 +493,13 @@ const PrivacyPolicy = () => {
 			<p className="mb-5">
 				If you have any questions about this Privacy Policy, You can contact us:
 			</p>
-			<ul className="list-disc pl-4">
-				<li>By email: riaurko@gmail.com</li>
+			<ul className="list-disc pl-4 space-y-4">
+				<li>
+					<p>By email: riaurko@gmail.com</p>
+				</li>
+				<li>
+					<p>By phone number: +8801717549249</p>
+				</li>
 			</ul>
 		</section>
 	);
