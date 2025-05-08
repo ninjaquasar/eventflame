@@ -5,6 +5,7 @@ import Home from "./layouts/Home";
 import SignUpPage from "./pages/SignUpPage";
 import EventDetails from "./pages/EventDetails";
 import ResetPassword from "./pages/ResetPassword";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const router = createBrowserRouter([
 	{
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
 			{
 				path: "/reset-password",
 				Component: ResetPassword,
+			},
+			{
+				path: "/privacy-policy",
+				Component: PrivacyPolicy,
 			},
 		],
 	},
